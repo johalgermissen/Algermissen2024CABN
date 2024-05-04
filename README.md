@@ -1,0 +1,2 @@
+# Algermissen2024CABN
+Analyses scripts used for Algermissen, J. & den Ouden, H. E. (2024). Pupil dilation reflects effortful action invigoration in overcoming aversive Pavlovian biases. Cognitive, Affective, & Behavioral Neuroscience.
