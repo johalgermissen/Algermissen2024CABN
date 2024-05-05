@@ -3,8 +3,11 @@
 ## Content ##
 This collection contains the following files:
 - **analyses**: scripts for all behavioral, gaze, pupil, and questionnaire data required to reproduce the reported results.
-- **data**: raw and pre-processed behavioral, eye-tracking (pupil and gaze), and questionnaire data.
 - **task**: scripts and files for running the task.
+
+Code for the entire paper will be maintained under https://github.com/johalgermissen/Algermissen2024CABN, with a permanent copy of the code at the time of publication under https://github.com/denoudenlab/Algermissen2024CABN.
+
+**(Raw data and processed data** for this project are available under https://data.ru.nl/collections/di/dcc/DSC_2019.00030_944 under a CC-BY-4.0 licence.
 
 ## Root directory ##
 Note that the **root directory** of this project needs to be adjusted inside analyses/regression/helpers/set_dirs.R. 
@@ -19,7 +22,6 @@ All analyses were performed in _R_. See the file /analyses/regression/helpers/pa
 Helper functions are located under analyses/regression/helpers.
 - *package_manager.R*: Loads packages. Also contains version numbers and print-outs of _sessionInfo()_ and _loadedNamespaces()_), set _scipen_ and _factor codings_.
 - *set_dirs.R*: Set directories for code and data. Mind adjusting the root directory to your file structure.
-
 
 ### functions ###
 Custom functions are located under analyses/regression/functions.
@@ -45,52 +47,7 @@ They comprise scripts to pre-process and analyze eye-tracking data for each resp
 - *08_mgngunc_plots_final.R*: Create final plots used in manuscript.
 
 ## Data folder ##
-This folder contains raw (and pre-processed) behavioral, gaze, pupil, and questionnaire data.
-
-#### rawData ####
-- *behavior*: behavioral raw data (separate file per subject) with the following variables:
-    - *Subject*: integer, subject number.
-    - *Age*: integer, subject age.
-    - *Gender*: string (male, female, other), subject gender.
-    - *Hand*: string (leftHand, rightHand), subject dominant hand.
-    - *Eye*: string (leftEye, rightEye), subject dominant eye.
-    - *Block*: integer between 1 and 4, block number.
-    - *Trialnr*: integer between 1 and 256, trial number.
-    - *Stimulus*: string, cue identifier within block, letter (A-D) indicates block, number (1-4) cue identity (see task folder).
-    - *Condition*: integer between 1 and 4, cue conditions: 1 = Go-to-Win, 2 = Go-to-Avoid, 3 = NoGo-to-Win, 4 = NoGo-to-Avoid.
-    - *ReqAction*: 1 or 0, required response, either Go (1) or NoGo (0).
-    - *Valence*: 1 or 0, cue valence, either Win (1) or Avoid (0).
-    - *Manipulation*: 1 or 0, arousal manipulation, 1 = high/ angry face, 0 = low/ neutral face.
-    - *Validity*: 1 or 0, feedback valdidity, either valid (1) or invalid (0).
-    - *Response*: 1 or 0, either Go response (1) or NoGo response (0).
-    - *ACC*: 1 or 0, either correct (1) or incorrect (0) response.
-    - *RT*: float, RT of any Go response (in sec.), NA for NoGo responses.
-    - *Outcome*: integer between -1 and 1, outcome obtained, 1 = reward, 0 = neutral, -1 = punishment.
-    - For further information, see the *wrapper_preprocessing()* function in the *00_mgngunc_functions_regression.R* script.
-- *pupil*: eye-tracking raw data (separate file per subject; both as .edf and converted to .asc) collected with an Eyelink 1000. Data can be conveniently read in with the *eyelinker* package in R. Data contains four columns (interrupted by messages); columns are:
-    - sample identifier (in ms relative to recording start).
-    - x-coordinate of gaze.
-    - y-coordinate of gaze.
-    - pupil diameter.
-    - For more information, see the respective file header and the Eyelink 1000 documentation.
-- *questionnaires*: questionnaire data read out from Limesurvey:
-    - limesurvey_survey_676118.lss: readout from Limesurvey.
-    - limesurvey_survey_676118.txt: readout from Limesurvey.
-    - QuestionnaireRaw.sav: questionnaire raw data in SPSS file (see *load_preprocess_questionnaires()* function in the *00_mgngunc_functions_regression.R* script for more information).
-    - survey_576118_en.xml: file with original questions read out from Limesurvey (see *load_preprocess_questionnaires()* function in the *00_mgngunc_functions_regression.R* script for more information).
-    - survey_archive_576118.lsa: readout from Limesurvey.
-
-#### processedData ####
-This folder contains data sets of pre-processed and aggregated gaze and pupil data.
-- folder *gaze*: 
-    - *distanceBaselineTrial_timecourse_StartCue_0866_1300ms*: file per subject with Euclidean distance of gaze position from pre-trial baseline from 866 ms before until 1300 ms after cue onset; rows are trials, columns are time samples (ms resolution).
-    - *xp_timecourse_StartCue_0866_1300ms*: file per subject with x-position of gaze from 866 ms before until 1300 ms after cue onset; rows are trials, columns are time samples (ms resolution).
-    - *yp_timecourse_StartCue_0866_1300ms*: file per subject with y-position of gaze from 866 ms before until 1300 ms after cue onset; rows are trials, columns are time samples (ms resolution).
-- folder *pupil*:
-    - *pupil_timecourse_StartMask_1000_2966ms*: file per subject with pupil width from 1000 ms before until 2966 ms after mask onset; rows are trials, columns are time samples (ms resolution).
-    - *pupil_timecourse_StartOutcome_1000_2000s*: file per subject with pupil width from 1000 ms before until 2000 ms after outcome onset; rows are trials, columns are time samples (ms resolution).
-    - *pupil_trial_StartMask_1000_2966ms*: file per subject with subject ID, trial number, pupil baseline, and pupil dilation (columns) per trial (rows) in time window from 0 ms till 2966 ms after mask onset.
-    - *pupil_trial_StartOutcome_1000_2000ms*: file per subject with subject ID, trial number, pupil baseline, and pupil dilation (columns) per trial (rows) in time window from 0 ms till 2000 ms after outcome onset.
+All data is available under https://data.ru.nl/collections/di/dcc/DSC_2019.00030_944 under a CC-BY-4.0 licence. 
 
 ## Task folder ##
 This folder contains all the code and files necessary to run the task in PsychoPy.
